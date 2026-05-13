@@ -11,7 +11,8 @@ exports.handler = async function(event) {
       fields[f.label] = f.value;
     });
 
-    const email = fields["Email"] || fields["email"] || "";
+    console.log("Tous les champs:", JSON.stringify(fields));
+const email = fields["Email"] || fields["email"] || "";
     const prenom = fields["First name"] || fields["Prénom"] || "";
 
     console.log("Email reçu:", email);
