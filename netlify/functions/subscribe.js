@@ -12,7 +12,7 @@ exports.handler = async function(event) {
     });
 
     console.log("Tous les champs:", JSON.stringify(fields));
-const email = fields["Email"] || fields["email"] || "";
+const email = fields["Email "] || fields["Email"] || fields["email"] || "";
     const prenom = fields["First name"] || fields["Prénom"] || "";
 
     console.log("Email reçu:", email);
