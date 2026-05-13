@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SpeakFlow AI — Know what to say in French, when real life starts. Practice real-life conversations with AI support.">
+<title>SpeakFlow AI — Know what to say in French, when real life starts.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#FF8A3D;
+  --peach:#FFC49D;
+  --mint:#A6E1D2;
+  --mint-dark:#2C9678;
+  --lavender:#B89BEF;
+  --navy:#1E2A3A;
+  --gray-light:#F7F8FA;
+  --gray-mid:#6B7280;
+  --white:#ffffff;
+  --text:#1E2A3A;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center}
+.nav-logo img{height:56px;width:auto;display:block}
+.nav-brand{font-size:18px;font-weight:800;color:var(--navy)}
+.nav-brand span.flow{color:var(--orange)}
+.nav-brand span.ai{color:var(--mint-dark)}
+.nav-cta{background:var(--orange);color:white;border:none;padding:10px 22px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,138,61,0.35)}
+
+/* HERO */
+.hero{min-height:100vh;padding:100px 24px 80px;display:flex;align-items:center;background:linear-gradient(160deg,#fff8f4 0%,#f0faf7 50%,#f5f0ff 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,61,0.08) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(166,225,210,0.15) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,138,61,0.1);color:var(--orange);font-size:12px;font-weight:600;padding:6px 14px;border-radius:50px;margin-bottom:20px;border:1px solid rgba(255,138,61,0.2)}
+.hero-badge::before{content:'✦';font-size:10px}
+.hero-title{font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.15;color:var(--navy);margin-bottom:20px}
+.hero-title .hl{color:var(--orange)}
+.hero-title .hl2{color:var(--mint-dark)}
+.hero-subtitle{font-size:17px;color:var(--gray-mid);line-height:1.7;margin-bottom:28px;max-width:480px}
+.hero-pillars{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.pillar{display:flex;align-items:center;gap:6px;background:white;border:1px solid rgba(0,0,0,0.08);border-radius:50px;padding:7px 14px;font-size:12px;font-weight:500;color:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.pillar-icon{font-size:14px}
+.hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:white;border:none;padding:16px 32px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;box-shadow:0 8px 24px rgba(255,138,61,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,138,61,0.4)}
+.btn-primary .arrow{transition:transform 0.2s}
+.btn-primary:hover .arrow{transform:translateX(4px)}
+.hero-note{font-size:12px;color:var(--gray-mid)}
+.hero-image{position:relative;z-index:2;display:flex;justify-content:center}
+.hero-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.12)}
+.hero-img-wrap img{width:100%;max-width:440px;display:block;object-fit:cover}
+.hero-float-badge{position:absolute;bottom:24px;right:-16px;background:white;border-radius:16px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.12);font-size:13px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.hero-float-badge .dot{width:10px;height:10px;border-radius:50%;background:var(--mint-dark)}
+
+/* SECTION BASE */
+section{padding:80px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.section-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--gray-mid);line-height:1.7;max-width:600px}
+
+/* PROBLEM */
+.problem{background:var(--navy)}
+.problem .section-tag{color:var(--peach)}
+.problem .section-title{color:white}
+.problem .section-title .hl{color:var(--orange)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.problem-text p{color:rgba(255,255,255,0.75);line-height:1.8;font-size:16px;margin-bottom:16px}
+.problem-text p strong{color:white;font-weight:600}
+.freeze-text{font-size:24px;font-weight:700;color:var(--peach);margin-top:24px;font-style:italic}
+.problem-list{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.problem-item{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.05);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,0.08)}
+.problem-item .x{color:#FF6B6B;font-size:16px;flex-shrink:0;margin-top:2px}
+.problem-item span{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.5}
+.problem-impact{margin-top:24px;background:rgba(255,138,61,0.1);border-left:3px solid var(--orange);border-radius:0 12px 12px 0;padding:16px 20px}
+.problem-impact p{color:rgba(255,255,255,0.75);font-size:14px;line-height:1.7}
+.problem-impact p strong{color:var(--peach)}
+
+/* SOLUTION */
+.solution{background:var(--gray-light)}
+.solution-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.solution-features{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.solution-feature{display:flex;align-items:flex-start;gap:14px;background:white;border-radius:14px;padding:18px 20px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.feature-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,138,61,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.feature-text strong{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.feature-text span{font-size:13px;color:var(--gray-mid);line-height:1.5}
+.solution-situations{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.situation-pill{background:white;border:1px solid rgba(0,0,0,0.08);border-radius:50px;padding:10px 16px;font-size:13px;font-weight:500;color:var(--navy);display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.situation-pill .s-icon{font-size:16px}
+.solution-closing{margin-top:24px;font-size:16px;font-style:italic;color:var(--navy);font-family:'Caveat',cursive;font-size:20px}
+
+/* METHOD */
+.method{background:white}
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.method-card{background:var(--gray-light);border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+.method-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+.method-num{font-size:48px;font-weight:800;color:rgba(0,0,0,0.05);position:absolute;top:12px;right:16px;line-height:1}
+.method-arrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;padding:5px 12px;border-radius:50px}
+.m1 .method-arrow{background:rgba(255,138,61,0.1);color:var(--orange)}
+.m2 .method-arrow{background:rgba(166,225,210,0.2);color:var(--mint-dark)}
+.m3 .method-arrow{background:rgba(184,155,239,0.15);color:#7C5DC9}
+.m4 .method-arrow{background:rgba(30,42,58,0.08);color:var(--navy)}
+.method-card h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.method-card p{font-size:14px;color:var(--gray-mid);line-height:1.6}
+
+/* MID CTA */
+.mid-cta{background:linear-gradient(135deg,var(--orange) 0%,#ff6b1a 100%);padding:60px 24px;text-align:center}
+.mid-cta h2{font-size:clamp(24px,3vw,36px);font-weight:800;color:white;margin-bottom:12px}
+.mid-cta p{font-size:16px;color:rgba(255,255,255,0.85);margin-bottom:32px}
+.btn-white{background:white;color:var(--orange);border:none;padding:16px 32px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.2)}
+.mid-note{font-size:12px;color:rgba(255,255,255,0.7);margin-top:12px}
+
+/* EXAMPLE */
+.example{background:var(--gray-light)}
+.example-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.chat-bubble-wrap{background:white;border-radius:24px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,0.08)}
+.chat-title{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:20px}
+.chat-msg{display:flex;flex-direction:column;gap:12px}
+.bubble{max-width:80%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5}
+.bubble.in{background:var(--gray-light);color:var(--navy);align-self:flex-start;border-radius:4px 16px 16px 16px}
+.bubble.in .lang{font-size:11px;color:var(--orange);font-weight:600;margin-bottom:4px}
+.bubble.out{background:var(--navy);color:white;align-self:flex-end;border-radius:16px 4px 16px 16px}
+.bubble.speakflow{background:rgba(255,138,61,0.08);border:1px solid rgba(255,138,61,0.2);color:var(--navy);align-self:flex-start;width:100%;max-width:100%;border-radius:12px;padding:16px}
+.bubble.speakflow .sf-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:8px}
+.bubble.speakflow .response-list{display:flex;flex-direction:column;gap:6px}
+.response-opt{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--navy)}
+.response-opt .opt-label{font-size:10px;font-weight:600;background:var(--orange);color:white;padding:2px 6px;border-radius:4px;flex-shrink:0}
+.example-content p{font-size:16px;color:var(--gray-mid);line-height:1.8;margin-bottom:16px}
+.example-list{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.example-list-item{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--navy)}
+.example-list-item::before{content:'✓';color:var(--mint-dark);font-weight:700;flex-shrink:0}
+.example-closing{font-size:17px;font-weight:700;color:var(--navy);margin-top:20px;line-height:1.5}
+.example-closing .hl{color:var(--orange)}
+
+/* FOR WHO */
+.forwho{background:white}
+.forwho-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.forwho-list{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.forwho-item{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--navy);padding:14px 18px;background:var(--gray-light);border-radius:12px}
+.forwho-item::before{content:'✓';color:var(--mint-dark);font-weight:700;font-size:16px;flex-shrink:0}
+.forwho-note{margin-top:24px;font-size:15px;color:var(--gray-mid);line-height:1.7;padding:16px 20px;background:rgba(255,138,61,0.06);border-radius:12px;border-left:3px solid var(--orange)}
+.forwho-note strong{color:var(--navy)}
+.forwho-visual{display:flex;flex-direction:column;gap:16px;align-items:center}
+.speech-bubble-flow{display:flex;flex-direction:column;gap:12px;width:100%}
+.flow-bubble{background:var(--gray-light);border-radius:16px;padding:14px 18px;font-size:15px;font-weight:500;color:var(--navy);border-left:3px solid var(--orange)}
+.flow-bubble.b2{border-left-color:var(--mint-dark)}
+.flow-bubble.b3{border-left-color:var(--lavender)}
+.flow-arrow{font-size:20px;color:var(--gray-mid);text-align:center}
+
+/* FINAL CTA */
+.final-cta{background:var(--navy);padding:100px 24px;text-align:center}
+.final-cta .section-tag{color:var(--peach)}
+.final-cta h2{font-size:clamp(28px,4vw,48px);font-weight:800;color:white;margin-bottom:16px;line-height:1.2}
+.final-cta h2 .hl{color:var(--orange)}
+.final-cta p{font-size:17px;color:rgba(255,255,255,0.7);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* FORM */
+.form-section{background:var(--gray-light);padding:80px 24px}
+.form-inner{max-width:640px;margin:0 auto}
+.form-title{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--navy);margin-bottom:8px}
+.form-sub{font-size:16px;color:var(--gray-mid);margin-bottom:32px}
+.form-box{background:white;border-radius:24px;padding:40px;box-shadow:0 8px 32px rgba(0,0,0,0.06)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 16px;border:1.5px solid rgba(0,0,0,0.1);border-radius:12px;font-family:'Poppins',sans-serif;font-size:15px;color:var(--navy);background:var(--gray-light);transition:border-color 0.2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);background:white}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-submit{width:100%;background:var(--orange);color:white;border:none;padding:18px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px}
+.form-submit:hover{background:#f07a2e;transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,138,61,0.35)}
+.form-privacy{text-align:center;font-size:12px;color:var(--gray-mid);margin-top:16px}
+
+/* TALLY PLACEHOLDER */
+.tally-note{background:rgba(255,138,61,0.06);border:1.5px dashed rgba(255,138,61,0.3);border-radius:12px;padding:16px 20px;font-size:13px;color:var(--gray-mid);margin-bottom:24px;text-align:center}
+.tally-note strong{color:var(--orange)}
+
+/* FOOTER */
+footer{background:var(--navy);padding:48px 24px 32px;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-brand .brand-name{font-size:20px;font-weight:800;color:white;margin-bottom:6px}
+.footer-brand .brand-name span{color:var(--orange)}
+.footer-brand .brand-name span.ai{color:var(--mint)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
+.footer-slogan{font-family:'Caveat',cursive;font-size:20px;color:var(--peach);text-align:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:32px 0 16px}
+.footer-bottom{max-width:1100px;margin:0 auto;text-align:center;font-size:12px;color:rgba(255,255,255,0.3)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-content{animation:fadeUp 0.7s ease both}
+.hero-image{animation:fadeUp 0.7s 0.15s ease both}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-inner,.problem-grid,.solution-inner,.example-inner,.forwho-grid{grid-template-columns:1fr}
+  .hero-image{order:-1}
+  .method-grid{grid-template-columns:1fr 1fr}
+  .solution-situations{grid-template-columns:1fr}
+  nav .nav-cta{display:none}
+}
+@media(max-width:480px){
+  .method-grid{grid-template-columns:1fr}
+  section{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="Logo__1_.png" alt="SpeakFlow AI">
+  </div>
+  <a href="#waitlist" class="nav-cta">Join the waitlist →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Early access open</div>
+      <h1 class="hero-title">Know what to say<br>in French, when<br><span class="hl">real life starts.</span></h1>
+      <p class="hero-subtitle">SpeakFlow AI helps you answer when it matters most — housing calls, job interviews, daily life in France.</p>
+      <div class="hero-pillars">
+        <div class="pillar"><span class="pillar-icon">🎯</span> Dare</div>
+        <div class="pillar"><span class="pillar-icon">👂</span> Understand</div>
+        <div class="pillar"><span class="pillar-icon">💬</span> Speak</div>
+        <div class="pillar"><span class="pillar-icon">🚀</span> Move forward</div>
+      </div>
+      <div class="hero-cta-group">
+        <a href="#waitlist" class="btn-primary">Join the waitlist <span class="arrow">→</span></a>
+      </div>
+      <p class="hero-note" style="margin-top:12px">Early access for first users. No spam.</p>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-wrap">
+        <img src="ChatGPT_Image_11_mai_2026__13_55_07.png" alt="Young woman using SpeakFlow AI in Paris" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#fff3eb,#e8f7f3)';this.parentNode.style.minHeight='420px';this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center'">
+        <div class="hero-float-badge">
+          <div class="dot"></div>
+          Confident. Prepared. Independent.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <span class="section-tag">The problem</span>
+    <h2 class="section-title">Real life <span class="hl">doesn't wait</span><br>until you feel ready.</h2>
+    <div class="problem-grid">
+      <div class="problem-text">
+        <p>Arriving in a new country is exciting.<br>But daily life quickly becomes stressful when you don't know what to say.</p>
+        <p>A landlord calls unexpectedly.<br>A doctor asks questions too fast.<br>Your child's school sends a message you don't fully understand.<br>Someone from work starts speaking quickly during a meeting.<br>A delivery driver calls you while you are outside.</p>
+        <p><strong>You understand some French…<br>but not enough to answer confidently.</strong></p>
+        <div class="freeze-text">So you freeze.</div>
+        <div class="problem-impact">
+          <p>Not because you are not intelligent.<br>Because <strong>real life conversations happen fast, under pressure, and without time to translate.</strong></p>
+        </div>
+      </div>
+      <div>
+        <div class="problem-list">
+          <div class="problem-item"><span class="x">✗</span><span>You hesitate. You avoid calls.</span></div>
+          <div class="problem-item"><span class="x">✗</span><span>You stay silent when you want to speak.</span></div>
+          <div class="problem-item"><span class="x">✗</span><span>You replay conversations in your head afterwards.</span></div>
+          <div class="problem-item"><span class="x">✗</span><span>Little by little, it affects your confidence and independence.</span></div>
+          <div class="problem-item"><span class="x">✗</span><span>You miss opportunities because you couldn't answer fast enough.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <span class="section-tag">The solution</span>
+    <h2 class="section-title">SpeakFlow AI helps you handle<br>real conversations with confidence.</h2>
+    <p class="section-sub">An AI-powered communication coach designed for real life in France. Not grammar rules — real situations.</p>
+    <div class="solution-inner">
+      <div>
+        <div class="solution-features">
+          <div class="solution-feature">
+            <div class="feature-icon">🤖</div>
+            <div class="feature-text"><strong>AI-powered communication coach</strong><span>Adapts to your level and situation in real time</span></div>
+          </div>
+          <div class="solution-feature">
+            <div class="feature-icon">🎯</div>
+            <div class="feature-text"><strong>Real-life situations only</strong><span>Practice what you actually face every day in France</span></div>
+          </div>
+          <div class="solution-feature">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-text"><strong>Instant answers, clear explanations</strong><span>Find the right words before the conversation happens</span></div>
+          </div>
+          <div class="solution-feature">
+            <div class="feature-icon">📈</div>
+            <div class="feature-text"><strong>Confidence step by step</strong><span>Stop feeling blocked. Start feeling capable.</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:16px;color:var(--gray-mid);margin-bottom:20px">You can train for situations like:</p>
+        <div class="solution-situations">
+          <div class="situation-pill"><span class="s-icon">📞</span> Phone calls</div>
+          <div class="situation-pill"><span class="s-icon">🏠</span> Housing</div>
+          <div class="situation-pill"><span class="s-icon">💼</span> Work conversations</div>
+          <div class="situation-pill"><span class="s-icon">📋</span> Appointments</div>
+          <div class="situation-pill"><span class="s-icon">🏫</span> School & admin</div>
+          <div class="situation-pill"><span class="s-icon">🛍️</span> Daily life</div>
+          <div class="situation-pill"><span class="s-icon">👔</span> Job interviews</div>
+          <div class="situation-pill"><span class="s-icon">💬</span> Small talk</div>
+        </div>
+        <div class="solution-closing">So you stop surviving…<br>and start building your place.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method">
+  <div class="container">
+    <span class="section-tag">The SpeakFlow method</span>
+    <h2 class="section-title">From surviving to taking your place.</h2>
+    <div class="method-grid">
+      <div class="method-card m1">
+        <span class="method-num">1</span>
+        <div class="method-arrow">Survive → Dare</div>
+        <h3>You stop avoiding conversations.</h3>
+        <p>You start answering, even with simple words. One step at a time.</p>
+      </div>
+      <div class="method-card m2">
+        <span class="method-num">2</span>
+        <div class="method-arrow">Adapt → Understand</div>
+        <h3>You recognize key information faster.</h3>
+        <p>You learn what people expect and how to process it in real time.</p>
+      </div>
+      <div class="method-card m3">
+        <span class="method-num">3</span>
+        <div class="method-arrow">Integrate → Speak</div>
+        <h3>You practice useful answers.</h3>
+        <p>Real situations, useful phrases — so you can participate instead of staying silent.</p>
+      </div>
+      <div class="method-card m4">
+        <span class="method-num">4</span>
+        <div class="method-arrow">Succeed → Move forward</div>
+        <h3>You become confident and independent.</h3>
+        <p>More comfortable building your life in France, step by step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA -->
+<div class="mid-cta">
+  <h2>Stop avoiding conversations in French.</h2>
+  <p>Prepare for real-life situations before they happen.</p>
+  <a href="#waitlist" class="btn-white">Join the waitlist <span>→</span></a>
+  <p class="mid-note">The first version is currently in preparation.</p>
+</div>
+
+<!-- EXAMPLE -->
+<section class="example">
+  <div class="container">
+    <span class="section-tag">Concrete example</span>
+    <h2 class="section-title">Your landlord calls you.</h2>
+    <div class="example-inner">
+      <div class="chat-bubble-wrap">
+        <div class="chat-title">📞 Simulation — Appel propriétaire</div>
+        <div class="chat-msg">
+          <div class="bubble in">
+            <div class="lang">Landlord says:</div>
+            Bonjour, votre dossier est complet ? Vous pouvez visiter demain à 18h ?
+          </div>
+          <div class="bubble out">You understand part of it… but panic.</div>
+          <div class="bubble speakflow">
+            <div class="sf-label">✦ SpeakFlow AI suggests:</div>
+            <div class="response-list">
+              <div class="response-opt"><span class="opt-label">Simple</span>Oui, je peux visiter demain à 18h.</div>
+              <div class="response-opt"><span class="opt-label">Natural</span>Oui, mon dossier est complet. Je peux visiter demain à 18h, merci.</div>
+              <div class="response-opt"><span class="opt-label">Polite</span>Oui, tout à fait. Mon dossier est prêt. À demain à 18h, merci beaucoup.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="example-content">
+        <p>You understand part of the conversation… but not everything. You panic.</p>
+        <p>With SpeakFlow AI, you can practice this exact situation <strong>before it happens in real life.</strong></p>
+        <div class="example-list">
+          <div class="example-list-item">What the landlord might say</div>
+          <div class="example-list-item">What the important information means</div>
+          <div class="example-list-item">How to answer politely</div>
+          <div class="example-list-item">How to ask someone to repeat</div>
+          <div class="example-list-item">How to confirm what you understood</div>
+        </div>
+        <div class="example-closing">So next time: you don't avoid the call.<br>You answer calmly. You understand faster.<br><span class="hl">You feel more confident.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho">
+  <div class="container">
+    <span class="section-tag">Who is it for</span>
+    <h2 class="section-title">SpeakFlow AI is made for people<br>building a life in France.</h2>
+    <div class="forwho-grid">
+      <div>
+        <div class="forwho-list">
+          <div class="forwho-item">Newcomers and recent arrivals</div>
+          <div class="forwho-item">Expats and immigrants</div>
+          <div class="forwho-item">International students</div>
+          <div class="forwho-item">International workers</div>
+          <div class="forwho-item">Parents managing daily life in French</div>
+          <div class="forwho-item">Anyone who understands some French but struggles to answer</div>
+        </div>
+        <div class="forwho-note">
+          <strong>You don't need perfect French.</strong><br>You need confidence in real situations.
+        </div>
+      </div>
+      <div class="forwho-visual">
+        <div class="speech-bubble-flow">
+          <div class="flow-bubble">I understand better.</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-bubble b2">I speak with confidence.</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-bubble b3">I move forward.</div>
+        </div>
+        <p style="font-size:14px;color:var(--gray-mid);margin-top:24px;text-align:center;max-width:300px">Because language is not only about words. It's about feeling independent, and feeling like you belong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <span class="section-tag">Early access</span>
+    <h2>Ready to feel more <span class="hl">confident</span> in French?</h2>
+    <p>Join the first users of SpeakFlow AI and get early access.</p>
+    <a href="#waitlist" class="btn-primary" style="margin:0 auto">Join the waitlist <span class="arrow">→</span></a>
+    <p class="mid-note" style="color:rgba(255,255,255,0.5);margin-top:16px">No spam. Early access only.</p>
+  </div>
+</section>
+
+<!-- WAITLIST FORM -->
+<section class="form-section" id="waitlist">
+  <div class="form-inner">
+    <div class="section-tag">Waitlist</div>
+    <h2 class="form-title">What situation in French is the hardest for you?</h2>
+    <p class="form-sub">Join the early access list and help shape SpeakFlow AI.</p>
+
+    <!-- 
+    ══════════════════════════════════════════════
+    OPTION A — FORMULAIRE TALLY (recommandé)
+    Remplace le formulaire ci-dessous par ton embed Tally :
+    1. Va sur tally.so → crée ton formulaire
+    2. Clique "Share" → "Embed" → copie le code <iframe>
+    3. Colle-le ici à la place du bloc form ci-dessous
+    ══════════════════════════════════════════════
+    -->
+
+    <div class="tally-note">
+      <strong>📋 À remplacer par ton embed Tally</strong><br>
+      Crée ton formulaire sur tally.so → Share → Embed → colle l'iframe ici.<br>
+      En attendant, le formulaire HTML ci-dessous fonctionne aussi.
+    </div>
+
+    <div class="form-box">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">First name</label>
+          <input type="text" id="name" name="name" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="country">Country of origin</label>
+          <input type="text" id="country" name="country" placeholder="Morocco, Italy, Spain...">
+        </div>
+        <div class="form-group">
+          <label for="level">Your French level</label>
+          <select id="level" name="level">
+            <option value="">Select your level</option>
+            <option>Beginner (A1/A2)</option>
+            <option>Intermediate (B1/B2)</option>
+            <option>Advanced (C1/C2)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="situation">The hardest situation for you in French</label>
+          <select id="situation" name="situation">
+            <option value="">Choose a situation</option>
+            <option>Phone calls</option>
+            <option>Housing conversations</option>
+            <option>Work conversations</option>
+            <option>Appointments (doctor, admin…)</option>
+            <option>Speaking with my child's school</option>
+            <option>Job interviews</option>
+            <option>Asking for help</option>
+            <option>Understanding fast French</option>
+            <option>Daily small talk</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pay">Would you pay for this tool if it helped you?</label>
+          <select id="pay" name="pay">
+            <option value="">Yes / No</option>
+            <option>Yes, definitely</option>
+            <option>Yes, if the price is right</option>
+            <option>Not sure yet</option>
+            <option>No</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Join the waitlist →</button>
+        <p class="form-privacy">No spam. Early access only. You can unsubscribe at any time.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="Logo__1_.png" alt="SpeakFlow AI" style="height:80px;width:auto;margin-bottom:10px;filter:brightness(0) invert(1)">
+      <p>Don't stay stuck.<br>Understand, speak, and move forward.</p>
+    </div>
+    <div class="footer-slogan">Dare. Understand. Speak. Move forward.</div>
+    <div class="footer-copy">speakflowai.fr</div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">© SpeakFlow AI — The right words, at the right moment.</div>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ You\'re on the list!';
+  btn.style.background = '#2C9678';
+  btn.disabled = true;
+  setTimeout(()=>{
+    const form = e.target;
+    form.innerHTML = '<div style="text-align:center;padding:40px 20px"><div style="font-size:48px;margin-bottom:16px">🎉</div><h3 style="font-size:22px;font-weight:700;color:#1E2A3A;margin-bottom:8px">Thank you!</h3><p style="color:#6B7280;line-height:1.7">You\'re on the SpeakFlow AI early access list.<br>We\'ll be in touch very soon.</p></div>';
+  }, 500);
+}
+
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+
+</body>
+</html>
