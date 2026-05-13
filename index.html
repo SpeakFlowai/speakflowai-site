@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SpeakFlow AI — Know what to say in French, when real life starts.">
+<title>SpeakFlow AI — Know what to say in French, when real life starts.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#FF8A3D;
+  --peach:#FFC49D;
+  --peach-bg:#FFF4EC;
+  --mint:#A6E1D2;
+  --mint-dark:#2C9678;
+  --mint-bg:#EDF9F5;
+  --lavender:#B89BEF;
+  --lavender-dark:#7C5DC9;
+  --lavender-bg:#F2EEFF;
+  --navy:#1E2A3A;
+  --navy-mid:#2D3E55;
+  --gray-light:#F7F8FA;
+  --gray-mid:#6B7280;
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--navy);background:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.07);padding:6px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:80px;width:auto;display:block;max-width:160px}
+.nav-cta{background:var(--orange);color:#fff;border:none;padding:11px 26px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:#f07020;box-shadow:0 6px 20px rgba(255,138,61,0.4)}
+
+/* ── HERO — texte gauche / image droite ── */
+.hero{min-height:100vh;padding:130px 40px 80px;display:flex;align-items:center;background:linear-gradient(150deg,#fff8f4 0%,#f8f4ff 55%,#edf9f5 100%);position:relative;overflow:hidden}
+.hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%}
+.hero-slogan{font-family:'Caveat',cursive;font-size:30px;font-weight:700;color:var(--orange);margin-bottom:10px;display:block}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--lavender-bg);color:var(--lavender-dark);font-size:12px;font-weight:600;padding:6px 14px;border-radius:50px;margin-bottom:18px;border:1px solid rgba(184,155,239,0.3)}
+h1{font-size:clamp(34px,4vw,54px);font-weight:800;line-height:1.12;color:var(--navy);margin-bottom:18px}
+h1 .hl{color:var(--orange)}
+.hero-sub{font-size:17px;color:var(--gray-mid);line-height:1.75;margin-bottom:28px;max-width:480px}
+.pillars{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.pill{display:flex;align-items:center;gap:6px;background:white;border:1px solid rgba(0,0,0,0.08);border-radius:50px;padding:7px 14px;font-size:12px;font-weight:500;color:var(--navy)}
+.btn-orange{background:var(--orange);color:#fff;border:none;padding:16px 34px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.02em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;box-shadow:0 6px 20px rgba(255,138,61,0.28)}
+.btn-orange:hover{background:#f07020;transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,138,61,0.38)}
+.hero-note{font-size:12px;color:var(--gray-mid);margin-top:12px}
+.hero-img-wrap{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 28px 64px rgba(0,0,0,0.14)}
+.hero-img-wrap img{width:100%;height:580px;object-fit:cover;object-position:center top;display:block}
+.hero-float{position:absolute;bottom:28px;left:-20px;background:white;border-radius:16px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.12);font-size:13px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.hero-float .dot{width:10px;height:10px;border-radius:50%;background:var(--mint-dark)}
+
+/* TAGS */
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px}
+.tag-peach{color:var(--peach)}
+.tag-orange{color:var(--orange)}
+.tag-lavender{color:var(--lavender-dark)}
+.tag-mint{color:var(--mint-dark)}
+
+/* ── PROBLEM — fond navy, pleine largeur ── */
+.problem{background:var(--navy);padding:90px 40px}
+.prob-inner{max-width:1140px;margin:0 auto}
+.prob-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;color:white;line-height:1.18;margin-bottom:14px}
+.prob-title .hl{color:var(--orange)}
+.prob-title .hl2{color:var(--peach)}
+.prob-intro{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.8;max-width:700px;margin-bottom:48px}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.prob-story p{color:rgba(255,255,255,0.72);font-size:15px;line-height:1.85;margin-bottom:14px}
+.prob-story p strong{color:white}
+.freeze{font-family:'Caveat',cursive;font-size:34px;font-weight:700;color:var(--peach);margin-top:20px;display:block}
+.prob-impact{margin-top:24px;background:rgba(255,196,157,0.1);border-left:3px solid var(--peach);border-radius:0 12px 12px 0;padding:16px 20px}
+.prob-impact p{color:rgba(255,255,255,0.7);font-size:14px;line-height:1.7}
+.prob-impact strong{color:var(--peach)}
+.prob-list{display:flex;flex-direction:column;gap:12px}
+.prob-item{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px 16px}
+.prob-x{color:#FF6B6B;font-size:15px;flex-shrink:0;margin-top:1px;font-weight:700}
+.prob-item span{color:rgba(255,255,255,0.78);font-size:14px;line-height:1.55}
+
+/* ── SOLUTION — fond mint, image gauche / texte droite (ALTERNANCE) ── */
+.solution{background:var(--mint-bg);padding:90px 40px}
+.sol-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.sol-visual{display:flex;flex-direction:column;gap:14px}
+.sol-card{background:white;border-radius:16px;padding:20px 22px;box-shadow:0 4px 16px rgba(0,0,0,0.06);border-left:4px solid var(--mint-dark)}
+.sol-card.lav{border-left-color:var(--lavender)}
+.sol-card.ora{border-left-color:var(--orange)}
+.sol-card.pch{border-left-color:var(--peach)}
+.sol-card strong{font-size:14px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px}
+.sol-card span{font-size:13px;color:var(--gray-mid);line-height:1.5}
+.sol-title{font-size:clamp(26px,3vw,38px);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:14px}
+.sol-title .hl{color:var(--mint-dark)}
+.sol-sub{font-size:15px;color:var(--gray-mid);line-height:1.8;margin-bottom:24px}
+.sol-pills{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.sol-pill{background:white;border:1px solid rgba(0,0,0,0.07);border-radius:50px;padding:9px 14px;font-size:13px;font-weight:500;color:var(--navy);display:flex;align-items:center;gap:7px}
+.sol-close{font-family:'Caveat',cursive;font-size:22px;color:var(--mint-dark);font-weight:700;margin-top:8px}
+
+/* ── METHOD — fond blanc, 4 cartes ── */
+.method{background:white;padding:90px 40px}
+.meth-inner{max-width:1140px;margin:0 auto}
+.meth-title{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:8px}
+.meth-sub{font-size:16px;color:var(--gray-mid);margin-bottom:48px}
+.meth-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.meth-card{border-radius:20px;padding:28px 22px;position:relative;overflow:hidden;transition:transform 0.2s}
+.meth-card:hover{transform:translateY(-4px)}
+.mc1{background:var(--peach-bg);border:1px solid rgba(255,196,157,0.4)}
+.mc2{background:var(--mint-bg);border:1px solid rgba(166,225,210,0.4)}
+.mc3{background:var(--lavender-bg);border:1px solid rgba(184,155,239,0.3)}
+.mc4{background:var(--navy)}
+.meth-num{font-size:52px;font-weight:800;position:absolute;top:10px;right:14px;line-height:1;opacity:0.07}
+.meth-arrow{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:50px;display:inline-block;margin-bottom:14px}
+.mc1 .meth-arrow{background:rgba(255,138,61,0.12);color:var(--orange)}
+.mc2 .meth-arrow{background:rgba(44,150,120,0.12);color:var(--mint-dark)}
+.mc3 .meth-arrow{background:rgba(184,155,239,0.2);color:var(--lavender-dark)}
+.mc4 .meth-arrow{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8)}
+.meth-card h3{font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.mc1 h3,.mc2 h3,.mc3 h3{color:var(--navy)}
+.mc4 h3{color:white}
+.meth-card p{font-size:13px;line-height:1.6}
+.mc1 p,.mc2 p,.mc3 p{color:var(--gray-mid)}
+.mc4 p{color:rgba(255,255,255,0.65)}
+
+/* MID CTA */
+.mid-cta{background:linear-gradient(135deg,var(--orange) 0%,#f06820 100%);padding:72px 40px;text-align:center}
+.mid-cta h2{font-size:clamp(24px,3vw,38px);font-weight:800;color:white;margin-bottom:12px;line-height:1.2}
+.mid-cta p{font-size:16px;color:rgba(255,255,255,0.85);margin-bottom:32px}
+.btn-white{background:white;color:var(--orange);border:none;padding:16px 34px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.02em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.18)}
+.mid-note{font-size:12px;color:rgba(255,255,255,0.6);margin-top:14px}
+
+/* ── EXAMPLE — fond lavande, texte gauche / chat droite (ALTERNANCE) ── */
+.example{background:var(--lavender-bg);padding:90px 40px}
+.ex-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.ex-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.2}
+.ex-title .hl{color:var(--lavender-dark)}
+.ex-text p{font-size:15px;color:var(--gray-mid);line-height:1.8;margin-bottom:14px}
+.ex-list{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.ex-item{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--navy);line-height:1.5}
+.ex-item::before{content:'✓';color:var(--lavender-dark);font-weight:700;flex-shrink:0;margin-top:1px}
+.ex-close{font-size:15px;font-weight:600;color:var(--navy);margin-top:16px;line-height:1.7}
+.ex-close .hl{color:var(--lavender-dark)}
+.chat-wrap{background:white;border-radius:24px;padding:28px;box-shadow:0 8px 40px rgba(184,155,239,0.15);border:1px solid rgba(184,155,239,0.2)}
+.chat-header{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.chat-dot{width:8px;height:8px;border-radius:50%;background:var(--lavender)}
+.b-in{background:var(--gray-light);color:var(--navy);border-radius:4px 16px 16px 16px;padding:14px 16px;font-size:14px;line-height:1.6;margin-bottom:10px}
+.b-lang{font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+.b-panic{background:rgba(255,107,107,0.07);border:1px solid rgba(255,107,107,0.18);color:#b03030;border-radius:16px 4px 16px 16px;padding:11px 15px;font-size:13px;font-style:italic;margin-bottom:12px;text-align:right}
+.b-sf{background:var(--lavender-bg);border:1px solid rgba(184,155,239,0.3);border-radius:12px;padding:18px;width:100%;margin-bottom:10px}
+.sf-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--lavender-dark);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.resp-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:13px;color:var(--navy);line-height:1.55}
+.resp-row:last-child{margin-bottom:0}
+.resp-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:2px}
+.rb-s{background:var(--mint-bg);color:var(--mint-dark)}
+.rb-n{background:var(--peach-bg);color:#b06010}
+.rb-p{background:var(--lavender-bg);color:var(--lavender-dark)}
+.b-result{background:var(--mint-bg);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--mint-dark);font-weight:500;border:1px solid rgba(166,225,210,0.4)}
+
+/* ── FOR WHO — fond blanc, visual gauche / texte droite (ALTERNANCE) ── */
+.forwho{background:white;padding:90px 40px}
+.fw-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.fw-visual{display:flex;flex-direction:column;gap:12px}
+.fw-bubble{background:var(--gray-light);border-radius:16px;padding:16px 20px;font-size:15px;font-weight:500;color:var(--navy);border-left:4px solid transparent}
+.fw-bubble.b-o{border-left-color:var(--orange)}
+.fw-bubble.b-m{border-left-color:var(--mint-dark)}
+.fw-bubble.b-l{border-left-color:var(--lavender)}
+.fw-arrow{font-size:18px;color:var(--gray-mid);text-align:center;padding:2px 0}
+.fw-note-img{font-size:13px;color:var(--gray-mid);margin-top:20px;line-height:1.7;text-align:center;max-width:320px}
+.fw-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.2}
+.fw-title .hl{color:var(--mint-dark)}
+.fw-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.fw-item{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--navy);padding:13px 16px;background:var(--gray-light);border-radius:12px}
+.fw-item::before{content:'✓';color:var(--mint-dark);font-weight:700;flex-shrink:0}
+.fw-note{background:var(--peach-bg);border-left:3px solid var(--orange);border-radius:0 12px 12px 0;padding:16px 20px;font-size:14px;color:var(--navy);line-height:1.6}
+.fw-note strong{color:var(--orange)}
+
+/* FINAL CTA */
+.final-cta{background:var(--navy);padding:100px 40px;text-align:center}
+.final-cta .section-tag{color:var(--peach);margin-bottom:14px;display:block}
+.final-cta h2{font-size:clamp(28px,4vw,48px);font-weight:800;color:white;margin-bottom:14px;line-height:1.18}
+.final-cta h2 .hl{color:var(--orange)}
+.final-cta > p{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* FORM */
+.form-sec{background:var(--peach-bg);padding:90px 40px}
+.form-inner{max-width:640px;margin:0 auto}
+.form-title{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--navy);margin-bottom:8px}
+.form-sub{font-size:15px;color:var(--gray-mid);margin-bottom:28px}
+.form-box{background:white;border-radius:24px;padding:40px;box-shadow:0 8px 32px rgba(255,138,61,0.08);border:1px solid rgba(255,196,157,0.25)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.form-group input,.form-group select{width:100%;padding:13px 16px;border:1.5px solid rgba(0,0,0,0.1);border-radius:12px;font-family:'Poppins',sans-serif;font-size:14px;color:var(--navy);background:var(--gray-light);transition:border-color 0.2s;outline:none;-webkit-appearance:none;appearance:none}
+.form-group input:focus,.form-group select:focus{border-color:var(--orange);background:white}
+.form-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:17px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:600;letter-spacing:0.02em;cursor:pointer;transition:all 0.2s;margin-top:8px}
+.form-submit:hover{background:#f07020;transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,138,61,0.35)}
+.form-privacy{text-align:center;font-size:12px;color:var(--gray-mid);margin-top:14px}
+
+/* FOOTER */
+footer{background:var(--navy);padding:52px 40px 32px}
+.foot-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.foot-logo img{height:80px;width:auto;opacity:0.9}
+.foot-mid{text-align:center}
+.foot-slogan{font-family:'Caveat',cursive;font-size:22px;color:var(--peach);margin-bottom:6px}
+.foot-tagline{font-size:13px;color:rgba(255,255,255,0.4)}
+.foot-right p{font-size:12px;color:rgba(255,255,255,0.35);text-align:right}
+.foot-divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:28px auto 16px;max-width:1140px}
+.foot-copy{text-align:center;font-size:11px;color:rgba(255,255,255,0.25);max-width:1140px;margin:0 auto}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner > div:first-child{animation:fadeUp 0.6s ease both}
+.hero-inner > div:last-child{animation:fadeUp 0.6s 0.12s ease both}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner,.sol-inner,.ex-inner,.fw-inner{grid-template-columns:1fr}
+  .hero-inner > div:last-child{order:-1}
+  .meth-grid{grid-template-columns:1fr 1fr}
+  nav{padding:6px 16px}.nav-logo img{height:52px}.nav-cta{padding:9px 16px;font-size:12px}
+  .hero,.problem,.solution,.method,.example,.forwho,.final-cta,.form-sec,footer{padding-left:20px;padding-right:20px}
+}
+@media(max-width:540px){
+  .meth-grid,.sol-pills,.prob-grid{grid-template-columns:1fr}
+  .foot-inner{flex-direction:column;text-align:center}
+  .foot-right p{text-align:center}
+}
+
+/* FOUNDER */
+.founder{background:white;padding:80px 40px}
+.founder-inner{max-width:760px;margin:0 auto;display:flex;gap:48px;align-items:center}
+.founder-img{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid var(--orange);box-shadow:0 8px 28px rgba(255,138,61,0.18)}
+.founder-quote{font-family:'Caveat',cursive;font-size:22px;color:var(--navy);line-height:1.5;margin-bottom:12px;font-weight:600}
+.founder-quote .hl{color:var(--orange)}
+.founder-bio{font-size:14px;color:var(--gray-mid);line-height:1.75;margin-bottom:14px}
+.founder-name{font-size:13px;font-weight:700;color:var(--navy)}
+.founder-role{font-size:12px;color:var(--orange);font-weight:500}
+@media(max-width:600px){
+  .founder-inner{flex-direction:column;text-align:center;gap:24px}
+  .founder-img{width:96px;height:96px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="Logo__1_.png" alt="SpeakFlow AI"></div>
+  <a href="#waitlist" class="nav-cta">Join the waitlist →</a>
+</nav>
+
+<!-- ① HERO — texte gauche / image droite -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span style="font-family:'Caveat',cursive;font-size:30px;font-weight:700;color:var(--orange);margin-bottom:10px;display:block">Speak naturally !</span>
+      <div class="hero-badge">✦ Early access open</div>
+      <h1>Stop freezing.<br>Start answering<br><span class="hl">in French.</span></h1>
+      <p class="hero-sub">SpeakFlow AI prepares you for real French conversations — housing calls, medical appointments, work meetings — before they happen.</p>
+      <div class="pillars">
+        <div class="pill">💬 Speak</div>
+        <div class="pill">👂 Understand</div>
+        <div class="pill">🤝 Belong</div>
+      </div>
+      <a href="#waitlist" class="btn-orange">Get early access →</a>
+      <p class="hero-note">Free early access · No spam · Unsubscribe anytime</p>
+    </div>
+    <div>
+      <div class="hero-img-wrap">
+        <img src="Photo-femme.png" alt="Young woman using SpeakFlow AI in Paris">
+        <div class="hero-float"><div class="dot"></div>For expats, immigrants & international workers in France</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ② PROBLEM — fond navy, pleine largeur -->
+<section class="problem">
+  <div class="prob-inner">
+    <span class="section-tag tag-peach">The problem</span>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;margin-bottom:40px;margin-top:16px">
+      <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--orange)">7.7M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">immigrants in France<br><span style="font-size:10px">(INSEE, 2024)</span></div></div>
+      <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--peach)">443K</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">foreign students<br><span style="font-size:10px">(Campus France, 2025)</span></div></div>
+      <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--mint)">6M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">foreign nationals<br><span style="font-size:10px">(INSEE, 2024)</span></div></div>
+      <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--lavender)">0</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">tools focused on<br>real-life French conversations</div></div>
+    </div>
+    <h2 class="prob-title">Real life <span class="hl">doesn't wait</span><br>until you feel <span class="hl2">ready.</span></h2>
+    <p class="prob-intro">Arriving in a new country is exciting. But daily life quickly becomes stressful when you don't know what to say — and the pressure to answer <em>right now</em> is real.</p>
+    <div class="prob-grid">
+      <div class="prob-story">
+        <p>A landlord calls unexpectedly.<br>A doctor asks questions too fast.<br>Your child's school sends a message you don't fully understand.<br>Someone from work starts speaking quickly during a meeting.</p>
+        <p><strong>You understand some French… but not enough to answer confidently.</strong></p>
+        <span class="freeze">So you freeze.</span>
+        <div class="prob-impact">
+          <p>Not because you are not intelligent.<br>Because <strong>real life conversations happen fast, under pressure, and without time to translate.</strong></p>
+        </div>
+      </div>
+      <div class="prob-list">
+        <div class="prob-item"><span class="prob-x">✗</span><span>You hesitate. You avoid calls.</span></div>
+        <div class="prob-item"><span class="prob-x">✗</span><span>You stay silent when you want to speak.</span></div>
+        <div class="prob-item"><span class="prob-x">✗</span><span>You replay conversations in your head afterwards.</span></div>
+        <div class="prob-item"><span class="prob-x">✗</span><span>Your confidence and independence take a hit, day after day.</span></div>
+        <div class="prob-item"><span class="prob-x">✗</span><span>You miss opportunities because you couldn't answer fast enough.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SOLUTION — fond mint, cartes gauche / texte droite (ALTERNANCE) -->
+<section class="solution">
+  <div class="sol-inner">
+    <div class="sol-visual">
+      <div class="sol-card ora"><strong>🤖 AI-powered communication coach</strong><span>Adapts to your level and situation in real time</span></div>
+      <div class="sol-card"><strong>🎯 Real-life situations only</strong><span>Practice what you actually face every day in France</span></div>
+      <div class="sol-card lav"><strong>⚡ Instant answers, clear explanations</strong><span>Find the right words before the conversation happens</span></div>
+      <div class="sol-card pch"><strong>📈 Confidence step by step</strong><span>Stop feeling blocked. Start feeling capable.</span></div>
+    </div>
+    <div>
+      <span class="section-tag tag-mint">The solution</span>
+      <h2 class="sol-title">SpeakFlow AI helps you handle real conversations <span class="hl">with confidence.</span></h2>
+      <p class="sol-sub">Not grammar rules. Not vocabulary lists. Unlike Duolingo or language apps, SpeakFlow AI focuses on one thing: the real conversations you face every day living in France — and training you to answer them with confidence.</p>
+      <div class="sol-pills">
+        <div class="sol-pill">📞 Phone calls</div>
+        <div class="sol-pill">🏠 Housing</div>
+        <div class="sol-pill">💼 Work conversations</div>
+        <div class="sol-pill">📋 Appointments</div>
+        <div class="sol-pill">🏫 School & admin</div>
+        <div class="sol-pill">👔 Job interviews</div>
+        <div class="sol-pill">🛍️ Daily life</div>
+        <div class="sol-pill">💬 Small talk</div>
+      </div>
+      <div class="sol-close">So you stop surviving… and start building your place.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ METHOD — fond blanc, 4 cartes couleur -->
+<section class="method">
+  <div class="meth-inner">
+    <span class="section-tag tag-lavender">The SpeakFlow method</span>
+    <h2 class="meth-title">From surviving to taking your place.</h2>
+    <p class="meth-sub">Four stages that take you from panic to independence.</p>
+    <div class="meth-grid">
+      <div class="meth-card mc1">
+        <span class="meth-num">1</span>
+        <div class="meth-arrow">Step 1 — Dare</div>
+        <h3>You stop avoiding conversations.</h3>
+        <p>You start answering, even with simple words. One step at a time.</p>
+      </div>
+      <div class="meth-card mc2">
+        <span class="meth-num">2</span>
+        <div class="meth-arrow">Step 2 — Understand</div>
+        <h3>You recognize key information faster.</h3>
+        <p>You learn what people expect and how to process it in real time.</p>
+      </div>
+      <div class="meth-card mc3">
+        <span class="meth-num">3</span>
+        <div class="meth-arrow">Step 3 — Speak</div>
+        <h3>You practice useful answers.</h3>
+        <p>Real situations, useful phrases — so you can participate instead of staying silent.</p>
+      </div>
+      <div class="meth-card mc4">
+        <span class="meth-num">4</span>
+        <div class="meth-arrow">Step 4 — Belong</div>
+        <h3>You become confident and independent.</h3>
+        <p>More comfortable building your life in France, step by step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA — orange -->
+<div class="mid-cta">
+  <h2>Stop avoiding conversations in French.</h2>
+  <p>Prepare for real-life situations before they happen.</p>
+  <a href="#waitlist" class="btn-white">I want in →</a>
+  <p class="mid-note">🚧 Product in development — join now to shape it and get priority access.</p>
+</div>
+
+<!-- ⑤ EXAMPLE — fond lavande, texte gauche / chat droite (ALTERNANCE) -->
+<section class="example">
+  <div class="ex-inner">
+    <div class="ex-text">
+      <span class="section-tag tag-lavender">Concrete example</span>
+      <h2 class="ex-title">Your landlord calls.<br>And it's <span class="hl">not simple.</span></h2>
+      <p>You understand part of the conversation… but not everything. And this time, it's not just "is the apartment available?" — it's something more complex, more administrative.</p>
+      <p>With SpeakFlow AI, you practice this exact situation <strong>before it happens in real life.</strong></p>
+      <div class="ex-list">
+        <div class="ex-item">What the landlord might say — and what it really means</div>
+        <div class="ex-item">How to ask for clarification without sounding lost</div>
+        <div class="ex-item">The exact words to confirm, question, or buy time</div>
+        <div class="ex-item">What NOT to say that could hurt your application</div>
+      </div>
+      <div class="ex-close">
+        Next time: you don't avoid the call.<br>
+        You answer calmly. You understand faster.<br>
+        <span class="hl">You feel more confident.</span>
+      </div>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-header"><div class="chat-dot"></div>📞 Simulation — Appel propriétaire</div>
+      <div class="b-in">
+        <div class="b-lang">Landlord says :</div>
+        Bonjour, nous avons bien reçu votre dossier, mais il nous manque les justificatifs concernant votre garant. Pouvez-vous nous envoyer son avis d'imposition et son contrat de travail avant vendredi ?
+      </div>
+      <div class="b-panic">You understood "dossier"… but "justificatifs"? "avis d'imposition"? Friday deadline? You panic.</div>
+      <div class="b-sf">
+        <div class="sf-label">✦ SpeakFlow AI suggests :</div>
+        <div class="resp-row"><span class="resp-badge rb-s">Simple</span>D'accord, je vais demander ces documents à mon garant. Je vous les envoie avant vendredi.</div>
+        <div class="resp-row"><span class="resp-badge rb-n">Natural</span>Bien sûr. Je contacte mon garant aujourd'hui pour récupérer son avis d'imposition et son contrat de travail. Vous les aurez avant vendredi.</div>
+        <div class="resp-row"><span class="resp-badge rb-p">Polite</span>Merci pour votre retour. Je vais contacter mon garant dès aujourd'hui afin de vous faire parvenir les documents demandés avant vendredi.</div>
+      </div>
+      <div class="b-result">✓ You also learn: "justificatifs" = supporting documents · "avis d'imposition" = tax assessment notice</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ FOR WHO — fond blanc, visual gauche / texte droite (ALTERNANCE) -->
+<section class="forwho">
+  <div class="fw-inner">
+    <div class="fw-visual">
+      <div class="fw-bubble b-o">I understand better.</div>
+      <div class="fw-arrow">↓</div>
+      <div class="fw-bubble b-m">I speak with confidence.</div>
+      <div class="fw-arrow">↓</div>
+      <div class="fw-bubble b-l">I move forward.</div>
+      <p class="fw-note-img">Because language is not only about words. It's about feeling independent, understood, and like you belong.</p>
+    </div>
+    <div>
+      <span class="section-tag tag-mint">Who is it for</span>
+      <h2 class="fw-title">Made for people <span class="hl">building a life</span> in France.</h2>
+      <div class="fw-list">
+        <div class="fw-item">Newcomers and recent arrivals</div>
+        <div class="fw-item">Expats and immigrants</div>
+        <div class="fw-item">International students</div>
+        <div class="fw-item">International workers</div>
+        <div class="fw-item">Parents managing daily life in French</div>
+        <div class="fw-item">Anyone who understands French but struggles to answer</div>
+      </div>
+      <div class="fw-note"><strong>You don't need perfect French.</strong><br>You need confidence in real situations — and the right words at the right moment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA — navy -->
+<section class="final-cta">
+  <span class="section-tag tag-peach" style="display:block;margin-bottom:14px">Early access</span>
+  <h2>Ready to feel more <span class="hl">confident</span> in French?</h2>
+  <p>Join the first users of SpeakFlow AI and get early access.</p>
+  <a href="#waitlist" class="btn-orange" style="margin:0 auto">Reserve my spot →</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:16px">No spam. Early access only.</p>
+</section>
+
+
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="founder-inner">
+    <img src="Coralie-2.jpg" alt="Coralie, Creator of SpeakFlow AI" class="founder-img">
+    <div>
+      <p class="founder-quote">"I know what it feels like to understand everything… and still <span class="hl">not find the words.</span>"</p>
+      <p class="founder-bio">Whether it's a medical appointment abroad, an admin call in a foreign language, or a work meeting where everyone speaks too fast — that moment of panic is real. I built SpeakFlow AI because I lived it, and because millions of people living in France live it every single day.</p>
+      <p class="founder-name">Coralie</p>
+      <p class="founder-role">Creator of SpeakFlow AI</p>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST FORM — fond pêche -->
+<section class="form-sec" id="waitlist">
+  <div class="form-inner">
+    <span class="section-tag tag-orange">Waitlist</span>
+    <h2 class="form-title">What situation in French<br>is the hardest for you?</h2>
+    <p class="form-sub">Join the early access list and help shape SpeakFlow AI. Be among the first to try it — and tell us what you need most.</p>
+    <div class="form-box" style="background:transparent;box-shadow:none;border:none;padding:0">
+      <iframe data-tally-src="https://tally.so/embed/J9XvD4?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="SpeakFlow AI Waitlist"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')===null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}<\/script>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo"><img src="Logo__1_.png" alt="SpeakFlow AI"></div>
+    <div class="foot-mid">
+      <div class="foot-slogan">Speak. Understand. Belong.</div>
+      <div class="foot-tagline">The right words, at the right moment.</div>
+    </div>
+    <div class="foot-right">
+      <p>speakflowai.fr</p>
+      <p style="margin-top:4px">© SpeakFlow AI 2026</p>
+    </div>
+  </div>
+  <hr class="foot-divider">
+  <div class="foot-copy">The right words, at the right moment. · <a href="/privacy.html" style="color:rgba(255,255,255,0.45);text-decoration:none;">Privacy policy</a></div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
