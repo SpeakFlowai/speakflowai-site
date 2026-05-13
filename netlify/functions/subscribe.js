@@ -11,12 +11,11 @@ exports.handler = async function(event) {
       fields[f.label] = f.value;
     });
 
-    const email = fields["Email"] || fields["email"] || fields["E-mail"] || "";
-    const prenom = fields["First name"] || fields["Prénom"] || fields["prenom"] || "";
+    const email = fields["Email"] || fields["email"] || "";
+    const prenom = fields["First name"] || fields["Prénom"] || "";
 
-    if (!email) {
-      return { statusCode: 400, body: "Email manquant" };
-    }
+    console.log("Email reçu:", email);
+    console.log("Prénom reçu:", prenom);
 
     const response = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
@@ -26,23 +25,19 @@ exports.handler = async function(event) {
       },
       body: JSON.stringify({
         email: email,
-        attributes: { PRENOM: prenom },
+        attributes: { FIRSTNAME: prenom },
         listIds: [3],
         updateEnabled: true
       })
     });
 
     const responseText = await response.text();
-    
-    return {
-      statusCode: 200,
-      body: "OK: " + responseText
-    };
+    console.log("Réponse Brevo:", response.status, responseText);
+
+    return { statusCode: 200, body: "OK" };
 
   } catch(e) {
-    return {
-      statusCode: 500,
-      body: "Erreur: " + e.toString()
-    };
+    console.log("Erreur:", e.toString());
+    return { statusCode: 500, body: e.toString() };
   }
 };
