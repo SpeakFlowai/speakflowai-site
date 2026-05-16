@@ -209,6 +209,19 @@ footer{background:var(--navy);padding:52px 40px 32px}
 .hero-inner > div:first-child{animation:fadeUp 0.6s ease both}
 .hero-inner > div:last-child{animation:fadeUp 0.6s 0.12s ease both}
 
+/* Stats grid responsive */
+.stats-grid { grid-template-columns: repeat(4,1fr); }
+
+/* Sol inner — texte à gauche sur desktop, visuel à droite */
+.sol-inner { grid-template-columns: 1fr 1fr; }
+.sol-text-col { order: 1; }
+.sol-visual { order: 2; }
+
+/* Forwho inner — texte à gauche sur desktop, visuel à droite */
+.fw-inner { grid-template-columns: 1fr 1fr; }
+.fw-text-col { order: 1; }
+.fw-visual { order: 2; }
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero-inner,.sol-inner,.ex-inner,.fw-inner{grid-template-columns:1fr}
@@ -216,6 +229,14 @@ footer{background:var(--navy);padding:52px 40px 32px}
   .meth-grid{grid-template-columns:1fr 1fr}
   nav{padding:2px 16px}.nav-logo img{height:80px}.nav-cta{padding:9px 16px;font-size:12px}
   .hero,.problem,.solution,.method,.example,.forwho,.final-cta,.form-sec,footer{padding-left:20px;padding-right:20px}
+  /* Sur mobile : titre solution en premier */
+  .sol-text-col { order: 1; }
+  .sol-visual { order: 2; }
+  /* Sur mobile : titre forwho en premier */
+  .fw-text-col { order: 1; }
+  .fw-visual { order: 2; }
+  /* Stats : 2 colonnes sur tablette */
+  .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
 }
 @media(max-width:540px){
   .meth-grid,.sol-pills,.prob-grid{grid-template-columns:1fr}
@@ -233,6 +254,9 @@ footer{background:var(--navy);padding:52px 40px 32px}
   h1{font-size:28px}
   .hero-sub{font-size:15px}
   .problem,.solution,.method,.example,.forwho,.final-cta,.form-sec,footer{padding-left:16px;padding-right:16px}
+  /* Stats : 2 colonnes sur mobile aussi */
+  .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+}
   .sol-inner,.fw-inner,.ex-inner{grid-template-columns:1fr;gap:32px}
   .prob-grid{grid-template-columns:1fr;gap:24px}
   .meth-grid{grid-template-columns:1fr}
@@ -299,7 +323,7 @@ footer{background:var(--navy);padding:52px 40px 32px}
 <section class="problem">
   <div class="prob-inner">
     <span class="section-tag tag-peach" style="font-size:13px;background:rgba(255,196,157,0.15);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,196,157,0.3)">⚠️ The problem</span>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:40px;margin-top:24px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:40px;margin-top:24px" class="stats-grid">
       <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--orange)">7.7M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">immigrants in France<br><span style="font-size:10px">(INSEE, 2024)</span></div></div>
       <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--peach)">443K</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">foreign students<br><span style="font-size:10px">(Campus France, 2025)</span></div></div>
       <div style="text-align:center"><div style="font-size:36px;font-weight:800;color:var(--mint)">6M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">foreign nationals<br><span style="font-size:10px">(INSEE, 2024)</span></div></div>
@@ -330,13 +354,7 @@ footer{background:var(--navy);padding:52px 40px 32px}
 <!-- ③ SOLUTION — fond mint, cartes gauche / texte droite (ALTERNANCE) -->
 <section class="solution">
   <div class="sol-inner">
-    <div class="sol-visual">
-      <div class="sol-card ora"><strong>🤖 AI-powered communication coach</strong><span>Adapts to your level and situation in real time</span></div>
-      <div class="sol-card"><strong>🎯 Real-life situations only</strong><span>Practice what you actually face every day in France</span></div>
-      <div class="sol-card lav"><strong>⚡ Instant answers, clear explanations</strong><span>Find the right words before the conversation happens</span></div>
-      <div class="sol-card pch"><strong>📈 Confidence step by step</strong><span>Stop feeling blocked. Start feeling capable.</span></div>
-    </div>
-    <div>
+    <div class="sol-text-col">
       <span class="section-tag tag-mint" style="font-size:13px;background:rgba(44,150,120,0.1);padding:6px 16px;border-radius:50px;border:1px solid rgba(44,150,120,0.2)">✅ The solution</span>
       <h2 class="sol-title">SpeakFlow AI helps you handle real conversations <span class="hl">with confidence.</span></h2>
       <p class="sol-sub">Not grammar rules. Not vocabulary lists. Unlike Duolingo or language apps, SpeakFlow AI focuses on one thing: the real conversations you face every day living in France — and training you to answer them with confidence.</p>
@@ -351,6 +369,12 @@ footer{background:var(--navy);padding:52px 40px 32px}
         <div class="sol-pill">💬 Small talk</div>
       </div>
       <div class="sol-close">So you stop surviving… and start building your place.</div>
+    </div>
+    <div class="sol-visual">
+      <div class="sol-card ora"><strong>🤖 AI-powered communication coach</strong><span>Adapts to your level and situation in real time</span></div>
+      <div class="sol-card"><strong>🎯 Real-life situations only</strong><span>Practice what you actually face every day in France</span></div>
+      <div class="sol-card lav"><strong>⚡ Instant answers, clear explanations</strong><span>Find the right words before the conversation happens</span></div>
+      <div class="sol-card pch"><strong>📈 Confidence step by step</strong><span>Stop feeling blocked. Start feeling capable.</span></div>
     </div>
   </div>
 </section>
@@ -439,15 +463,7 @@ footer{background:var(--navy);padding:52px 40px 32px}
 <!-- ⑥ FOR WHO — fond blanc, visual gauche / texte droite (ALTERNANCE) -->
 <section class="forwho">
   <div class="fw-inner">
-    <div class="fw-visual">
-      <div class="fw-bubble b-o">I understand better.</div>
-      <div class="fw-arrow">↓</div>
-      <div class="fw-bubble b-m">I speak with confidence.</div>
-      <div class="fw-arrow">↓</div>
-      <div class="fw-bubble b-l">I move forward.</div>
-      <p class="fw-note-img">Because language is not only about words. It's about feeling independent, understood, and like you belong.</p>
-    </div>
-    <div>
+    <div class="fw-text-col">
       <span class="section-tag tag-mint">Who is it for</span>
       <h2 class="fw-title">Made for people <span class="hl">building a life</span> in France.</h2>
       <div class="fw-list">
@@ -459,6 +475,14 @@ footer{background:var(--navy);padding:52px 40px 32px}
         <div class="fw-item">Anyone who understands French but struggles to answer</div>
       </div>
       <div class="fw-note"><strong>You don't need perfect French.</strong><br>You need confidence in real situations — and the right words at the right moment.</div>
+    </div>
+    <div class="fw-visual">
+      <div class="fw-bubble b-o">I understand better.</div>
+      <div class="fw-arrow">↓</div>
+      <div class="fw-bubble b-m">I speak with confidence.</div>
+      <div class="fw-arrow">↓</div>
+      <div class="fw-bubble b-l">I move forward.</div>
+      <p class="fw-note-img">Because language is not only about words. It's about feeling independent, understood, and like you belong.</p>
     </div>
   </div>
 </section>
