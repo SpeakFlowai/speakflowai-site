@@ -52,7 +52,14 @@ h1 .hl{color:var(--orange)}
 .hero-float .dot{width:10px;height:10px;border-radius:50%;background:var(--mint-dark)}
 
 /* TAGS */
-.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:block}
+/* Espace entre badge et titre */
+.section-tag + h2,
+.section-tag + .prob-title,
+.section-tag + .sol-title,
+.section-tag + .fw-title,
+.section-tag + .ex-title,
+.section-tag + .meth-title { margin-top: 16px; }
 .tag-peach{color:var(--peach)}
 .tag-orange{color:var(--orange)}
 .tag-lavender{color:var(--lavender-dark)}
@@ -213,25 +220,35 @@ footer{background:var(--navy);padding:52px 40px 32px}
 .stats-grid { grid-template-columns: repeat(4,1fr); }
 .sol-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
 .fw-inner  { grid-template-columns: 1fr 1fr; gap: 64px; }
-/* ordre desktop : texte gauche, visuel droite */
-.sol-text-col { order: 1; }
-.sol-visual   { order: 2; }
-.fw-text-col  { order: 1; }
-.fw-visual    { order: 2; }
+.ex-inner  { grid-template-columns: 1fr 1fr; gap: 64px; }
+
+/* Zigzag desktop :
+   Solution  → texte gauche  / cartes droite
+   Example   → chat gauche   / texte droite  (inversé)
+   For Who   → texte gauche  / bulles droite
+*/
+.sol-text-col        { order: 1; }
+.sol-visual          { order: 2; }
+.ex-inner .chat-wrap { order: 1; }
+.ex-inner .ex-text   { order: 2; }
+.fw-text-col         { order: 1; }
+.fw-visual           { order: 2; }
 
 /* RESPONSIVE ≤ 900px */
 @media(max-width:900px){
   .hero-inner,.ex-inner{grid-template-columns:1fr}
-  .sol-inner,.fw-inner{grid-template-columns:1fr; gap:32px}
+  .sol-inner,.fw-inner,.ex-inner{grid-template-columns:1fr; gap:32px}
   .hero-inner > div:last-child{order:-1}
   .meth-grid{grid-template-columns:1fr 1fr}
   nav{padding:2px 16px}.nav-logo img{height:80px}.nav-cta{padding:9px 16px;font-size:12px}
   .hero,.problem,.solution,.method,.example,.forwho,.final-cta,.form-sec,footer{padding-left:20px;padding-right:20px}
-  /* mobile : titre toujours en premier */
-  .sol-text-col { order: 1; }
-  .sol-visual   { order: 2; }
-  .fw-text-col  { order: 1; }
-  .fw-visual    { order: 2; }
+  /* mobile : titre toujours en premier, chat après */
+  .sol-text-col        { order: 1; }
+  .sol-visual          { order: 2; }
+  .ex-inner .ex-text   { order: 1; }
+  .ex-inner .chat-wrap { order: 2; }
+  .fw-text-col         { order: 1; }
+  .fw-visual           { order: 2; }
   /* stats : 2×2 sur tablette */
   .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
 }
