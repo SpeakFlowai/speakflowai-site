@@ -209,33 +209,30 @@ footer{background:var(--navy);padding:52px 40px 32px}
 .hero-inner > div:first-child{animation:fadeUp 0.6s ease both}
 .hero-inner > div:last-child{animation:fadeUp 0.6s 0.12s ease both}
 
-/* Stats grid responsive */
+/* ── DESKTOP : grilles 2 colonnes ── */
 .stats-grid { grid-template-columns: repeat(4,1fr); }
-
-/* Sol inner — texte à gauche sur desktop, visuel à droite */
-.sol-inner { grid-template-columns: 1fr 1fr; }
+.sol-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+.fw-inner  { grid-template-columns: 1fr 1fr; gap: 64px; }
+/* ordre desktop : texte gauche, visuel droite */
 .sol-text-col { order: 1; }
-.sol-visual { order: 2; }
+.sol-visual   { order: 2; }
+.fw-text-col  { order: 1; }
+.fw-visual    { order: 2; }
 
-/* Forwho inner — texte à gauche sur desktop, visuel à droite */
-.fw-inner { grid-template-columns: 1fr 1fr; }
-.fw-text-col { order: 1; }
-.fw-visual { order: 2; }
-
-/* RESPONSIVE */
+/* RESPONSIVE ≤ 900px */
 @media(max-width:900px){
-  .hero-inner,.sol-inner,.ex-inner,.fw-inner{grid-template-columns:1fr}
+  .hero-inner,.ex-inner{grid-template-columns:1fr}
+  .sol-inner,.fw-inner{grid-template-columns:1fr; gap:32px}
   .hero-inner > div:last-child{order:-1}
   .meth-grid{grid-template-columns:1fr 1fr}
   nav{padding:2px 16px}.nav-logo img{height:80px}.nav-cta{padding:9px 16px;font-size:12px}
   .hero,.problem,.solution,.method,.example,.forwho,.final-cta,.form-sec,footer{padding-left:20px;padding-right:20px}
-  /* Sur mobile : titre solution en premier */
+  /* mobile : titre toujours en premier */
   .sol-text-col { order: 1; }
-  .sol-visual { order: 2; }
-  /* Sur mobile : titre forwho en premier */
-  .fw-text-col { order: 1; }
-  .fw-visual { order: 2; }
-  /* Stats : 2 colonnes sur tablette */
+  .sol-visual   { order: 2; }
+  .fw-text-col  { order: 1; }
+  .fw-visual    { order: 2; }
+  /* stats : 2×2 sur tablette */
   .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
 }
 @media(max-width:540px){
@@ -254,19 +251,7 @@ footer{background:var(--navy);padding:52px 40px 32px}
   h1{font-size:28px}
   .hero-sub{font-size:15px}
   .problem,.solution,.method,.example,.forwho,.final-cta,.form-sec,footer{padding-left:16px;padding-right:16px}
-  /* Stats : 2 colonnes sur mobile aussi */
   .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
-}
-  .sol-inner,.fw-inner,.ex-inner{grid-template-columns:1fr;gap:32px}
-  .prob-grid{grid-template-columns:1fr;gap:24px}
-  .meth-grid{grid-template-columns:1fr}
-  .foot-inner{flex-direction:column;text-align:center;gap:16px}
-  .foot-right p{text-align:center}
-  .foot-logo img{height:60px}
-  .sol-pills{grid-template-columns:1fr 1fr}
-  .pillars{gap:6px}
-  .pill{font-size:11px;padding:5px 10px}
-  .founder-inner{flex-direction:column;text-align:center;gap:24px}
 }
 
 /* FOUNDER */
